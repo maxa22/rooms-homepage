@@ -1,0 +1,271 @@
+.attribution {
+  text-align: center;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: "Spartan", sans-serif;
+}
+.main-container {
+  overflow: hidden;
+}
+.images img.desktop {
+  display: none;
+}
+/* ######### NAAVIGATION ######### */
+
+nav {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  height: 11rem;
+  display: flex;
+  align-items: center;
+  z-index: 5;
+}
+.close,
+.hamburger {
+  margin-left: 3.5rem;
+  z-index: 10;
+  cursor: pointer;
+}
+.logo,
+ul {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+ul {
+  list-style-type: none;
+  width: 100%;
+  padding-left: 11rem;
+  display: flex;
+  justify-content: space-around;
+}
+.navigation {
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 11rem;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.navigation a,
+.navigation a:link {
+  display: inline-block;
+  text-decoration: none;
+  color: #000;
+  font-size: 1.2rem;
+  font-weight: 700;
+  position: relative;
+}
+.navigation a:visited {
+  color: hsl(0, 0%, 27%);
+}
+.navigation a:hover {
+  transform: translateY(-2px);
+}
+.navigation a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: hsl(0, 0%, 27%);
+  overflow: hidden;
+  transition: width 0.3s;
+}
+.navigation a:hover::after {
+  width: 100%;
+}
+nav.active {
+  height: 199rem;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+nav.active .hamburger {
+  display: none;
+}
+nav.active .navigation {
+  width: 100%;
+}
+
+/* ######### SLIDER ######### */
+.main-container__images,
+.main-container__text {
+  position: relative;
+  width: 100%;
+}
+.images {
+  width: 100%;
+  display: flex;
+  transform: translateX(-100%);
+}
+.images img {
+  display: block;
+}
+/* ######### ARROWS ######### */
+
+.arrows {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.arrows button {
+  width: 6rem;
+  height: 6rem;
+  background-color: #000;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+.arrows button:hover {
+  background-color: hsl(0, 0%, 27%);
+}
+
+/* ######### TEXT SLIDE ######### */
+
+.text {
+  display: flex;
+  transform: translate(-100%);
+}
+
+.text > div {
+  padding: 7.5rem 3.5rem;
+}
+h1 {
+  font-size: 2.6rem;
+}
+.text p {
+  margin: 1.7rem 0 5.7rem;
+}
+
+.text a {
+  display: flex;
+  text-decoration: none;
+  color: #000;
+  letter-spacing: 1rem;
+}
+.text img {
+  margin-left: 1.5rem;
+}
+.text a:hover img {
+  animation: move 0.8s ease-in-out infinite;
+}
+@keyframes move {
+  0% {
+    transform: translate(0);
+  }
+  50% {
+    transform: translateX(2rem);
+  }
+}
+
+/* ######### ABOUT SECTION ######### */
+
+.about img {
+  width: 100%;
+  display: block;
+}
+.about h2 {
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  letter-spacing: 0.5rem;
+  margin-bottom: 2rem;
+}
+p {
+  font-size: 1.2rem;
+  color: hsl(0, 0%, 63%);
+}
+.about > div {
+  padding: 6rem 3.5rem;
+}
+
+@media (min-width: 786px) {
+  main {
+    overflow-x: hidden;
+  }
+  .images img.mobile {
+    display: none;
+  }
+  .images img.desktop {
+    display: block;
+  }
+  .hamburger,
+  .close {
+    display: none;
+  }
+  .logo {
+    left: 3.5rem;
+    transform: translateX(0);
+  }
+  nav.active {
+    height: 11rem;
+    background-color: transparent;
+  }
+  nav.active .navigation,
+  .navigation {
+    width: 45%;
+    left: 7rem;
+    background-color: transparent;
+  }
+  .navigation a,
+  .navigation a:link {
+    color: #fff;
+    margin: 0 1rem;
+  }
+  .navigation a:visited {
+    color: #fff;
+  }
+  .navigation a::after {
+    background-color: #fff;
+  }
+}
+
+@media (min-width: 1100px) {
+  .main-container {
+    display: flex;
+    overflow: visible;
+  }
+  .main-container__images {
+    width: 58%;
+  }
+  .main-container__text {
+    width: 42%;
+    overflow: hidden;
+    z-index: 5;
+    background-color: #fff;
+  }
+  h1 {
+    font-size: 3.7rem;
+  }
+  .arrows {
+    right: -16rem;
+    z-index: 10;
+  }
+  .arrows button {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .about {
+    display: grid;
+    grid-template-columns: 29% auto calc(42% - 16rem);
+  }
+  .about img {
+    height: 100%;
+  }
+  .about > div {
+    padding: 7rem 3.5rem;
+  }
+}

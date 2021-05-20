@@ -38,18 +38,18 @@ window.onresize = changeWindowSize;
 
 rightButton.addEventListener('click', () => {
     count++;
-    slider.style.transition= 'all 0.4s';
+    slider.style.transition= 'all 0.2s';
     slider.style.transform = 'translateX(-' + count * 100 + '%)';
-    textSlider.style.transition= 'all 0.4s';
+    textSlider.style.transition= 'all 0.2s';
     textSlider.style.transform = 'translateX(-' + count * 100 + '%)';
     disableAndEnablePointerEvents(rightButton);
 })
 
 leftButton.addEventListener('click', () => {
     count--;
-    slider.style.transition= 'all 0.4s';
+    slider.style.transition= 'all 0.2s';
     slider.style.transform = 'translateX(-' + count * 100 + '%)';
-    textSlider.style.transition= 'all 0.4s';
+    textSlider.style.transition= 'all 0.2s';
     textSlider.style.transform = 'translateX(-' + count * 100 + '%)';
     disableAndEnablePointerEvents(leftButton);
 })

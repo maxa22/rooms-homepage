@@ -18,6 +18,9 @@ body {
 .images img.desktop {
   display: none;
 }
+img::selection {
+  background: transparent;
+}
 /* ######### NAAVIGATION ######### */
 
 nav {

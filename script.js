@@ -23,53 +23,62 @@ close.addEventListener('click', () => {
 
 let count = 1;
 let size = images.length - 1;
-function changeWindowSize() {
+
+
+changeImageSizeOnWindowResize();
+
+window.onresize = changeImageSizeOnWindowResize;
+
+function changeImageSizeOnWindowResize() {
     let images = window.innerWidth <= 786 ? document.querySelectorAll('.images img.mobile') : document.querySelectorAll('.images img.desktop');
-    for(let i=0; i < images.length; i++) {
+    for (let i = 0; i < images.length; i++) {
         images[i].style.width = document.querySelector('.images').clientWidth + 'px';
         paragraph[i].style.width = document.querySelector('.text').clientWidth - 70 + 'px';
     }
 
 }
 
-changeWindowSize();
-
-window.onresize = changeWindowSize;
-
 rightButton.addEventListener('click', () => {
     count++;
-    slider.style.transition= 'all 0.2s';
-    slider.style.transform = 'translateX(-' + count * 100 + '%)';
-    textSlider.style.transition= 'all 0.2s';
-    textSlider.style.transform = 'translateX(-' + count * 100 + '%)';
+    addTransitionToImageAndTextSlider();
+    slideImageAndText(count);
     disableAndEnablePointerEvents(rightButton);
 })
 
 leftButton.addEventListener('click', () => {
     count--;
-    slider.style.transition= 'all 0.2s';
-    slider.style.transform = 'translateX(-' + count * 100 + '%)';
-    textSlider.style.transition= 'all 0.2s';
-    textSlider.style.transform = 'translateX(-' + count * 100 + '%)';
+    addTransitionToImageAndTextSlider();
+    slideImageAndText(count);
     disableAndEnablePointerEvents(leftButton);
 })
 
 slider.addEventListener('transitionend', () => {
     if(count === 0) {
-        slider.style.transition = 'none';
-        textSlider.style.transition = 'none';
+        removeTransitionFromImageAndTextSlider();
         count = size - 1;
-        slider.style.transform = 'translateX(-' + count * 100 +'%)';
-        textSlider.style.transform = 'translateX(-' + count * 100 +'%)';
+        slideImageAndText(count);
     } 
     else if(count === size) {
-        slider.style.transition = 'none';
-        textSlider.style.transition = 'none';
+        removeTransitionFromImageAndTextSlider();
         count = 1;
-        slider.style.transform = 'translateX(-100%)';
-        textSlider.style.transform = 'translateX(-100%)';
+        slideImageAndText(count);
     }
 })
+
+function slideImageAndText(value) {
+    slider.style.transform = 'translateX(-' + value * 100 + '%)';
+    textSlider.style.transform = 'translateX(-' + value * 100 + '%)';
+}
+
+function addTransitionToImageAndTextSlider() {
+    slider.style.transition = 'all 0.2s';
+    textSlider.style.transition = 'all 0.2s';
+}
+
+function removeTransitionFromImageAndTextSlider() {
+    slider.style.transition = 'none';
+    textSlider.style.transition = 'none';
+}
 
 function disableAndEnablePointerEvents(button) {
     button.style.pointerEvents = 'none';
